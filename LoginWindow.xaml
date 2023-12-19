@@ -62,7 +62,7 @@
     </Window.Triggers>
     <Grid>
         <Rectangle Fill="#7FFFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center" Height="400" Width="368" RadiusX="15" RadiusY="15" Margin="62,26,62,66" />
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="400" Width="400" RadiusX="15" RadiusY="15" />
+        <Rectangle Fill="#FFF3F3F3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="400" Width="400" RadiusX="15" RadiusY="15" />
         <Rectangle x:Name="rectangle" Fill="#FF1550D1" Height="70" Width="70" Margin="412,90,10,332" RadiusY="15" RadiusX="15" RenderTransformOrigin="0.5,0.5" >
             <Rectangle.RenderTransform>
                 <TransformGroup>
@@ -79,9 +79,9 @@
             <Rectangle Fill="#FF1550D1" HorizontalAlignment="Left" Height="40" Margin="0,13,0,0"  VerticalAlignment="Top" Width="10"/>
             <TextBlock HorizontalAlignment="Left" Margin="55,0,0,0" TextWrapping="Wrap" Text="ВХОД" VerticalAlignment="Top" Width="189" Height="53" FontWeight="Bold" FontSize="46" Foreground="#FF1550D1"/>
             <Line X1="0" Y1="0" X2="305" Y2="0" Stroke="#FFA4A3A3" StrokeThickness="3" Margin="55,140,0,159" />
-            <TextBlock Margin="55,109,0,0" TextWrapping="Wrap" Text="Никнейм" Width="304" Height="31" Foreground="#FFA4A3A3" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0,5,0,0" UseLayoutRounding="True" FontSize="16" />
+            <TextBox Margin="55,109,0,0" TextWrapping="Wrap" Text="Никнейм" Width="304" Height="31" Foreground="#FFA4A3A3" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0,5,0,0" UseLayoutRounding="True" FontSize="16" BorderBrush="{x:Null}" Background="{x:Null}" />
             <Line X1="0" Y1="0" X2="305" Y2="0" Stroke="#FFA4A3A3" StrokeThickness="3" Margin="55,211,0,88" RenderTransformOrigin="0.503,7.417" />
-            <TextBlock Margin="55,180,0,0" TextWrapping="Wrap" Text="Пароль" Width="304" Height="31" Foreground="#FFA4A3A3" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0,5,0,0" UseLayoutRounding="True" FontSize="16" />
+            <TextBox Margin="55,180,0,0" TextWrapping="Wrap" Text="Пароль" Width="304" Height="31" Foreground="#FFA4A3A3" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0,5,0,0" UseLayoutRounding="True" FontSize="16" BorderBrush="{x:Null}" Background="{x:Null}" />
             <Rectangle Fill="#FF1550D1" HorizontalAlignment="Left" Height="33" Margin="99,278,0,0" RadiusY="26" RadiusX="26" VerticalAlignment="Top" Width="214"/>
             <TextBlock  MouseLeftButtonDown="OpenTheApplication" HorizontalAlignment="Left" Margin="119,278,0,0" TextWrapping="Wrap" Text="ВОЙТИ" VerticalAlignment="Top" Height="33" Width="173" Foreground="White" FontSize="18" FontWeight="Bold" TextAlignment="Center" Padding="3"/>
         </Grid>
@@ -90,13 +90,13 @@
             <Rectangle Fill="White" HorizontalAlignment="Left" Height="45" Margin="0,10,0,0"  VerticalAlignment="Top" Width="10"/>
             <TextBlock HorizontalAlignment="Left" Margin="55,5,-31,0" TextWrapping="Wrap" Text="РЕГИСТРАЦИЯ" VerticalAlignment="Top" Width="335" Height="50" FontWeight="Bold" FontSize="36" Foreground="White"/>
             <Line X1="0" Y1="0" X2="305" Y2="0" Stroke="White" StrokeThickness="3" Margin="55,140,0,159" />
-            <TextBlock Margin="55,109,0,0" TextWrapping="Wrap" Text="Никнейм" Width="304" Height="31" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0,5,0,0" UseLayoutRounding="True" FontSize="16" />
+            <TextBox Margin="55,109,0,0" TextWrapping="Wrap" Text="Никнейм" Width="304" Height="31" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0,5,0,0" UseLayoutRounding="True" FontSize="16" BorderBrush="{x:Null}" Background="{x:Null}" />
             <Line X1="0" Y1="0" X2="305" Y2="0" Stroke="White" StrokeThickness="3" Margin="55,189,0,110" RenderTransformOrigin="0.503,7.417" />
-            <TextBlock Margin="55,158,0,0" TextWrapping="Wrap" Text="Пароль" Width="304" Height="31" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0,5,0,0" UseLayoutRounding="True" FontSize="16" />
+            <TextBox Margin="55,158,0,0" TextWrapping="Wrap" Text="Пароль" Width="304" Height="31" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0,5,0,0" UseLayoutRounding="True" FontSize="16" BorderBrush="{x:Null}" Background="{x:Null}" />
             <Rectangle Fill="White" HorizontalAlignment="Left" Height="33" Margin="99,278,0,0" RadiusY="26" RadiusX="26" VerticalAlignment="Top" Width="214"/>
             <TextBlock MouseLeftButtonDown="OpenTheApplication" HorizontalAlignment="Left" Margin="119,278,0,0" TextWrapping="Wrap" Text="ДАЛЬШЕ" VerticalAlignment="Top" Height="33" Width="173" Foreground="#FF1550D1" FontSize="18" FontWeight="Bold" TextAlignment="Center" Padding="3"/>
             <Line X1="0" Y1="0" X2="305" Y2="0" Stroke="White" StrokeThickness="3" Margin="55,237,0,62" RenderTransformOrigin="0.503,7.417" />
-            <TextBlock Margin="55,206,0,0" TextWrapping="Wrap" Text="Подтвердите пароль" Width="304" Height="31" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0,5,0,0" UseLayoutRounding="True" FontSize="16" />
+            <TextBox Margin="55,206,0,0" TextWrapping="Wrap" Text="Подтвердите пароль" Width="304" Height="31" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0,5,0,0" UseLayoutRounding="True" FontSize="16" BorderBrush="{x:Null}" Background="{x:Null}" />
         </Grid>
     </Grid>
 </Window>

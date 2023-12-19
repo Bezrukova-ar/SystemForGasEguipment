@@ -5,8 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SystemForGasEguipment"
         mc:Ignorable="d"
-        Title="ApplicationWindowForARegularUser" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True"
+        Background="Transparent"
+        Height="500" Width="800"
+        >
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Border CornerRadius="10 0 0 10">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FF3264D1" Offset="0"/>
+                    <GradientStop Color="#FF32ADD1" Offset="0.8"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Canvas>
+                    <Polygon Points="0,20 230,140 0,270" Fill="White" Opacity="0.1" />
+                    <Polygon Points="100,400 230,140 0,270" Fill="White" Opacity="0.1" />
+                    <Polygon Points="120,400 200,370 180,450" Fill="White" Opacity="0.2" />
+                    <Ellipse Margin="25 420 0 0" Width="60" Height="60"  Fill="White" Opacity="0.2" />
+                    <Ellipse Margin="175 20 0 0" Width="160" Height="160"  Fill="White" Opacity="0.1" />
+                </Canvas>
+                <StackPanel Margin="0,120">
+                    <TextBlock TextWrapping="Wrap" Text="Из-за ограничений прав вы можете только получить информацию об элементе газового оборудования, либо подать заявку на расширение прав доступа" Foreground="White" FontSize="20" Margin="10,0" />
+
+                    <Border MouseLeftButtonDown="ApplyForExtensionOfAccessRights_MouseLeftButtonDown" Height="45" Width="175" BorderBrush="White" BorderThickness="2" CornerRadius="25" Margin="45,15">
+                        <Border.Background>
+                            <SolidColorBrush Color="White" Opacity="0.3"/>
+                        </Border.Background>
+                        <TextBlock Background="{x:Null}" Foreground="White" Text="Подать заявку" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"  />
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Border Background="White" Grid.Column="1" CornerRadius="0 10 10 0">
+            <Grid>
+                <Border BorderBrush="#FF32ADD1" BorderThickness="2" HorizontalAlignment="Left" Height="300" Width="300" Margin="24,174,0,0" VerticalAlignment="Top">
+                    <Image x:Name="imageControl"  MaxHeight="300" MaxWidth="300"  MinHeight="300" MinWidth="300"  Drop="Image_Drop" DragEnter="Image_DragEnter" AllowDrop="True" />
+                </Border>
+                
+                <TextBlock HorizontalAlignment="Left" Margin="24,13,0,0" TextWrapping="Wrap" Text="Перетащите изображение QR-кода на месторасположения изображения, либо воспользуйтесь кнопкой для загрузки изображения" VerticalAlignment="Top" Foreground="#FF32ADD1" FontSize="20" FontWeight="Bold" Width="484"/>
+                <Border MouseLeftButtonDown="UploadImage_MouseLeftButtonDown" Height="45" BorderBrush="#FF32ADD1" BorderThickness="2" CornerRadius="25" Margin="24,124,209,331">
+                    <TextBlock Background="{x:Null}" Foreground="#FF32ADD1" Text="Выбрать изображение" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"  />
+                </Border>
+
+                <Border MouseLeftButtonDown="GetInformationOnAnImage_MouseLeftButtonDown" Height="45" Width="150" BorderBrush="#FF32ADD1" BorderThickness="2" CornerRadius="25" Margin="358,429,25,26" >
+                    <TextBlock Background="{x:Null}" Foreground="#FF32ADD1" Text="Распознать" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"  />
+                </Border>
+            </Grid>
+        </Border>
     </Grid>
 </Window>
