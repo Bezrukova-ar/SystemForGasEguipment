@@ -24,5 +24,19 @@ namespace SystemForGasEguipment
         {
             InitializeComponent();
         }
+        private void OpenTheApplication(object sender, RoutedEventArgs e)
+        {
+            // тут ддолжна быть обработка, в зависимости от роли пользователя открывается соответствубщее окно
+            //пока только окно для гостя
+            ApplicationWindowForARegularUser newWindow = new ApplicationWindowForARegularUser();
+            newWindow.Show();
+
+            this.Close();
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
     }
 }
