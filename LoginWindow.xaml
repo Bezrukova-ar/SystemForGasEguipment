@@ -6,11 +6,73 @@
         xmlns:local="clr-namespace:SystemForGasEguipment"
         mc:Ignorable="d"
         Height="600" Width="600" WindowStyle="None" AllowsTransparency="True" Background="Transparent" WindowStartupLocation="CenterScreen" >
+    <Window.Resources>
+        <Storyboard x:Key="Переход на форму регистрации">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="textBlock">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.1" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="rectangle">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.128"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="3.258"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="4.772"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="5.743"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rectangle">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-39"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-115"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-168"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-202"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="rectangle">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.086"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="3.114"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="4.257"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="5.728"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rectangle">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-3"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="29"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="69"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="120.5"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Rectangle.RadiusX)" Storyboard.TargetName="rectangle">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="6.104"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="3.567"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="2.456"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Rectangle.RadiusY)" Storyboard.TargetName="rectangle">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="6.104"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="3.567"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="2.456"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Login">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Register">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseDown" SourceName="textBlock">
+            <BeginStoryboard Storyboard="{StaticResource Переход на форму регистрации}"/>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid>
         <Rectangle Fill="#7FFFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center" Height="400" Width="368" RadiusX="15" RadiusY="15" Margin="62,26,62,66" />
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="400" Width="400" RadiusX="15" RadiusY="15" />
-        <Rectangle Fill="#FF1550D1" Height="70" Width="70" Margin="412,90,10,332" RadiusY="15" RadiusX="15" />
-        <TextBlock HorizontalAlignment="Left" Margin="466,144,0,0" TextWrapping="Wrap" Text="+" VerticalAlignment="Top" Height="70" Width="70" Foreground="White" FontFamily="Segoe UI Semibold" FontSize="48" TextAlignment="Center"/>
+        <Rectangle x:Name="rectangle" Fill="#FF1550D1" Height="70" Width="70" Margin="412,90,10,332" RadiusY="15" RadiusX="15" RenderTransformOrigin="0.5,0.5" >
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="466,144,0,0" TextWrapping="Wrap" Text="+" VerticalAlignment="Top" Height="70" Width="70" Foreground="White" FontFamily="Segoe UI Semibold" FontSize="48" TextAlignment="Center"/>
 
         <Grid x:Name="Login" Margin="100,131,141,158">
             <Rectangle Fill="#FF1550D1" HorizontalAlignment="Left" Height="40" Margin="0,13,0,0"  VerticalAlignment="Top" Width="10"/>
@@ -21,6 +83,19 @@
             <TextBlock Margin="55,180,0,0" TextWrapping="Wrap" Text="Пароль" Width="304" Height="31" Foreground="#FFA4A3A3" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0,5,0,0" UseLayoutRounding="True" FontSize="16" />
             <Rectangle Fill="#FF1550D1" HorizontalAlignment="Left" Height="33" Margin="99,278,0,0" RadiusY="26" RadiusX="26" VerticalAlignment="Top" Width="214"/>
             <TextBlock HorizontalAlignment="Left" Margin="119,278,0,0" TextWrapping="Wrap" Text="ВОЙТИ" VerticalAlignment="Top" Height="33" Width="173" Foreground="White" FontSize="18" FontWeight="Bold" TextAlignment="Center" Padding="3"/>
+        </Grid>
+        
+        <Grid x:Name="Register" Margin="100,131,141,158" Visibility="Hidden">
+            <Rectangle Fill="White" HorizontalAlignment="Left" Height="40" Margin="0,13,0,0"  VerticalAlignment="Top" Width="10"/>
+            <TextBlock HorizontalAlignment="Left" Margin="40,3,-16,0" TextWrapping="Wrap" Text="РЕГИСТРАЦИЯ" VerticalAlignment="Top" Width="335" Height="50" FontWeight="Bold" FontSize="36" Foreground="White"/>
+            <Line X1="0" Y1="0" X2="305" Y2="0" Stroke="White" StrokeThickness="3" Margin="55,140,0,159" />
+            <TextBlock Margin="55,109,0,0" TextWrapping="Wrap" Text="Никнейм" Width="304" Height="31" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0,5,0,0" UseLayoutRounding="True" FontSize="16" />
+            <Line X1="0" Y1="0" X2="305" Y2="0" Stroke="White" StrokeThickness="3" Margin="55,189,0,110" RenderTransformOrigin="0.503,7.417" />
+            <TextBlock Margin="55,158,0,0" TextWrapping="Wrap" Text="Пароль" Width="304" Height="31" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0,5,0,0" UseLayoutRounding="True" FontSize="16" />
+            <Rectangle Fill="White" HorizontalAlignment="Left" Height="33" Margin="99,278,0,0" RadiusY="26" RadiusX="26" VerticalAlignment="Top" Width="214"/>
+            <TextBlock HorizontalAlignment="Left" Margin="119,278,0,0" TextWrapping="Wrap" Text="ДАЛЬШЕ" VerticalAlignment="Top" Height="33" Width="173" Foreground="#FF1550D1" FontSize="18" FontWeight="Bold" TextAlignment="Center" Padding="3"/>
+            <Line X1="0" Y1="0" X2="305" Y2="0" Stroke="White" StrokeThickness="3" Margin="55,237,0,62" RenderTransformOrigin="0.503,7.417" />
+            <TextBlock Margin="55,206,0,0" TextWrapping="Wrap" Text="Подтвердите пароль" Width="304" Height="31" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0,5,0,0" UseLayoutRounding="True" FontSize="16" />
         </Grid>
     </Grid>
 </Window>
