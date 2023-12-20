@@ -56,6 +56,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="AccountingAndMarkingOfEquipment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AdministratorControlWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -68,6 +72,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AccountingAndMarkingOfEquipment.xaml.cs">
+      <DependentUpon>AccountingAndMarkingOfEquipment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdministratorControlWindow.xaml.cs">
       <DependentUpon>AdministratorControlWindow.xaml</DependentUpon>
     </Compile>
