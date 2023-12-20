@@ -30,7 +30,11 @@ namespace SystemForGasEguipment
             //пока только окно для гостя
             /* ApplicationWindowForARegularUser newWindow = new ApplicationWindowForARegularUser();
              newWindow.Show();*/
-            AdministratorControlWindow newWindow = new AdministratorControlWindow();
+
+            /* AdministratorControlWindow newWindow = new AdministratorControlWindow();
+             newWindow.Show();*/
+
+            AccountingAndMarkingOfEquipment newWindow = new AccountingAndMarkingOfEquipment();
             newWindow.Show();
 
             this.Close();

@@ -3,12 +3,86 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SystemForGasEguipment"
+        xmlns:vm="clr-namespace:SystemForGasEguipment.ViewModel" 
+        xmlns:Menu="clr-namespace:SystemForGasEguipment.Utilities"        
         mc:Ignorable="d"
-         WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True"
-        Background="Transparent"
-        Height="500" Width="800">
+        Height="600" 
+        Width="850"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent">
+    <Window.DataContext>
+        <vm:NavigationVM/>
+    </Window.DataContext>
     <Grid>
-        
+        <!--Граница окна-->
+        <Border Background="#FFE2F1FD"
+                CornerRadius="20">
+        </Border>
+
+        <Grid>
+            <!--Базовая сетка-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="228"/>
+                <ColumnDefinition Width="622"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Панель навигации-->
+            <Grid HorizontalAlignment="Left"
+                  Width="228">
+                <Border Background="#FFA9CFF0"
+                        CornerRadius="20,0,0,20"/>
+
+                
+                <StackPanel Height="Auto"
+                            Width="228" Margin="0,160,0,120">
+                    <!--кнопка странички Добавления элемента газового оборудования-->
+                    <Menu:CustomBTN Style="{StaticResource btnStyle}"
+                                    Command="{Binding AddCommand}">
+                        <Grid>
+                            <TextBlock Text="Добавление"
+                                       Style="{StaticResource Text_Style}"/>
+                        </Grid>
+                    </Menu:CustomBTN>
+
+                    <!--кнопка странички редактирования информации о газ оборудовании-->
+                    <Menu:CustomBTN Style="{StaticResource btnStyle}"
+                                    Command="{Binding EditCommand}">
+                        <Grid>
+                            <TextBlock Text="Редактирование"
+                                       Style="{StaticResource Text_Style}"/>
+                        </Grid>
+                    </Menu:CustomBTN>
+
+                    <!--Кнопка открытия странички удаления элементов газового оборудования-->
+                    <Menu:CustomBTN Style="{StaticResource btnStyle}"
+                                    Command="{Binding RemoveCommand}">
+                        <Grid>
+                            
+                            <TextBlock Text="Удаление"
+                                       Style="{StaticResource Text_Style}"/>
+                        </Grid>
+                    </Menu:CustomBTN>
+                    
+                    <!--кнопка  странички инвенторизации элемента газового оборудования-->
+                    <Menu:CustomBTN Style="{StaticResource btnStyle}"
+                                    Command="{Binding InventCommand}"
+                                    IsChecked="True">
+                        <Grid>
+
+                            <TextBlock Text="Инвенторизация"
+                                       Style="{StaticResource Text_Style}"/>
+                        </Grid>
+                    </Menu:CustomBTN>
+                   
+                </StackPanel>
+            </Grid>
+            <!--Благодаря этому работает навигация-->
+            <Grid Grid.Column=" 1">
+                <ContentControl x:Name="Pages"
+                                Content="{Binding CurrentView}" />
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

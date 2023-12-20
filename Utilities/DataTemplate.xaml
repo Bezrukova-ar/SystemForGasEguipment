@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:SystemForGasEguipment.ViewModel"
+                    xmlns:view="clr-namespace:SystemForGasEguipment.View">
+
+    <DataTemplate DataType="{x:Type vm:AddingAGasEquipmentElementVM}">
+        <view:AddingAGasEquipmentElement/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:RemovingAnElementOfGasEquipmentVM}">
+        <view:RemovingAnElementOfGasEquipment/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:EditingAGasEquipmentItemVM}">
+        <view:EditingAGasEquipmentItem/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:InventoryVM}">
+        <view:Inventory/>
+    </DataTemplate>
+
+
+</ResourceDictionary>
