@@ -28,7 +28,9 @@ namespace SystemForGasEguipment
         {
             // тут ддолжна быть обработка, в зависимости от роли пользователя открывается соответствубщее окно
             //пока только окно для гостя
-            ApplicationWindowForARegularUser newWindow = new ApplicationWindowForARegularUser();
+            /* ApplicationWindowForARegularUser newWindow = new ApplicationWindowForARegularUser();
+             newWindow.Show();*/
+            AdministratorControlWindow newWindow = new AdministratorControlWindow();
             newWindow.Show();
 
             this.Close();
