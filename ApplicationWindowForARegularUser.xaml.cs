@@ -1,17 +1,8 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SystemForGasEguipment
 {
@@ -41,15 +32,15 @@ namespace SystemForGasEguipment
         {
             // Открывает диалоговое окно проводника для выбора изображения
             OpenFileDialog openFileDialog = new OpenFileDialog();
-             openFileDialog.Filter = "Изображения|*.jpg;*.png;*.gif|Все файлы|*.*";
+            openFileDialog.Filter = "Изображения|*.jpg;*.png;*.gif|Все файлы|*.*";
 
-             if (openFileDialog.ShowDialog() == true)
-             {
-                 // Загружает выбранное изображение в Image
-                 BitmapImage bitmap = new BitmapImage(new Uri(openFileDialog.FileName));
-                 imageControl.Source = bitmap;
-             }
-        }    
+            if (openFileDialog.ShowDialog() == true)
+            {
+                // Загружает выбранное изображение в Image
+                BitmapImage bitmap = new BitmapImage(new Uri(openFileDialog.FileName));
+                imageControl.Source = bitmap;
+            }
+        }
         private void Image_Drop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -63,7 +54,7 @@ namespace SystemForGasEguipment
                     imageControl.Source = bitmap;
                 }
             }
-            
+
         }
 
         private void Image_DragEnter(object sender, DragEventArgs e)
