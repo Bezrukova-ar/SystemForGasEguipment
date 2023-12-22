@@ -87,7 +87,7 @@
                              BorderThickness="0 0 0 2"
                              Margin="55,104,0,155"
                              SelectionBrush="#FFA4A3A3" CaretBrush="Black"
-                     FontSize=" 18"/>
+                             FontSize=" 18"/>
 
             <PasswordBox x:Name="passBoxPass"
                              Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
