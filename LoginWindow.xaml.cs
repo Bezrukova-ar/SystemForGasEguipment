@@ -21,18 +21,47 @@ namespace SystemForGasEguipment
         //открывание формы
         private void OpenTheApplication(object sender, RoutedEventArgs e)
         {
-            // тут ддолжна быть обработка, в зависимости от роли пользователя открывается соответствубщее окно
-            //пока только окно для гостя
-            /* ApplicationWindowForARegularUser newWindow = new ApplicationWindowForARegularUser();
-             newWindow.Show();*/
-
-            /* AdministratorControlWindow newWindow = new AdministratorControlWindow();
-             newWindow.Show();*/
-
-            AccountingAndMarkingOfEquipment newWindow = new AccountingAndMarkingOfEquipment();
-            newWindow.Show();
-
-            this.Close();
+            string login = textBoxLog.Text.Trim();
+            string password = passBoxPass.Password.Trim();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                // Создание команды для вызова хранимой процедуры
+                SqlCommand command = new SqlCommand("AuthenticateUser", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                // Параметры хранимой процедуры
+                command.Parameters.AddWithValue("@login", login);
+                command.Parameters.AddWithValue("@password", password);
+                // Выполнение команды
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    // Пользователь найден, получение данных пользователя
+                    reader.Read();
+                    //string userRole1 = reader.GetString(3).ToString();
+                    int userRole = reader.GetInt32(3);
+                    if (userRole == 1)
+                    {
+                        ApplicationWindowForARegularUser newWindow = new ApplicationWindowForARegularUser();
+                        newWindow.Show();
+                    }
+                    if (userRole == 2)
+                    {
+                        AdministratorControlWindow newWindow = new AdministratorControlWindow();
+                        newWindow.Show();
+                    }
+                    if (userRole == 3)
+                    {
+                        AccountingAndMarkingOfEquipment newWindow = new AccountingAndMarkingOfEquipment();
+                        newWindow.Show();
+                    }
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Пользователь не найден.");
+                }
+            }                 
         }
         
         //открытие формы после регистрации   

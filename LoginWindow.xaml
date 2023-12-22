@@ -89,7 +89,7 @@
                              SelectionBrush="#FFA4A3A3" CaretBrush="Black"
                      FontSize=" 18"/>
 
-            <PasswordBox x:Name="passBoxPassWindowLogin"
+            <PasswordBox x:Name="passBoxPass"
                              Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
                              materialDesign:HintAssist.Hint="Пароль"
                              materialDesign:HintAssist.FloatingOffset="0,-20"
