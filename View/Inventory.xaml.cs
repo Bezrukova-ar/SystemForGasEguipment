@@ -3,11 +3,9 @@ using iTextSharp.text.pdf;
 using Microsoft.Win32;
 using System.Data;
 using System.Data.SqlClient;
-
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using ZXing;
 using ZXing.QrCode;
 

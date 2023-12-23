@@ -1,8 +1,10 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using ZXing;
 
 namespace SystemForGasEguipment
 {
@@ -25,7 +27,67 @@ namespace SystemForGasEguipment
         //получить информацию по qr-коду
         private void GetInformationOnAnImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            BitmapSource bitmapSource = (BitmapSource)imageControl.Source;
 
+            // Проверяем, что изображение не пустое
+            if (bitmapSource != null)
+            {
+                // Преобразуем изображение в Bitmap
+                var bitmap = BitmapFromSource(bitmapSource);
+
+                var barcodeReader = new BarcodeReader();
+                var result = barcodeReader.Decode(bitmap);
+
+                if (result != null)
+                {
+                    string queryString = "SELECT * FROM EguipmentItems Where eguipmentID = '" + result.ToString() + "'";
+
+                    using (SqlConnection connection = new SqlConnection(LoginWindow.connectionString))
+                    {
+                        SqlCommand command = new SqlCommand(queryString, connection);
+                        connection.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                string message = $"Название: {reader.GetString(1)}" +
+                               $"\nМодель: {reader.GetString(2)}\nСерийный номер: {reader.GetInt32(3)}"+
+                               $"\nДата изготовления: {reader.GetDateTime(4)}\nГарантийный период: {reader.GetString(5)}"+
+                               $"\nДавление газа: {reader.GetString(6)}\nТип газа: {reader.GetString(7)}" +
+                               $"\nМатериал изготовления: {reader.GetString(8)}\nРазмер: {reader.GetString(9)}";
+                                MessageBox.Show(message);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Не найдено.");
+                        }
+                        reader.Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("QR-код не распознан", "Error");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Пустое изображение", "Error");
+            }
+        }
+        private System.Drawing.Bitmap BitmapFromSource(BitmapSource bitmapsource)
+        {
+            System.Drawing.Bitmap bitmap;
+            using (var outStream = new System.IO.MemoryStream())
+            {
+                BitmapEncoder enc = new BmpBitmapEncoder();
+                enc.Frames.Add(BitmapFrame.Create(bitmapsource));
+                enc.Save(outStream);
+                bitmap = new System.Drawing.Bitmap(outStream);
+            }
+            return bitmap;
         }
         //кнопка загрузки изображения
         private void UploadImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
