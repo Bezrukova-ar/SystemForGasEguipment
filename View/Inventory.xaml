@@ -12,7 +12,22 @@
         <vm:InventoryVM/>
     </UserControl.DataContext>
     <Grid>
-        <Button x:Name="buttonInventory" PreviewMouseDown="buttonInventory_PreviewMouseDown" Content="Отчет по инвенторизации"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="580" Height="36" Background="#FF305FDC" BorderBrush="{x:Null}" Foreground="White" />
-
+        <Button x:Name="buttonInventory" PreviewMouseDown="buttonInventory_PreviewMouseDown" Content="Отчет по инвенторизации"  HorizontalAlignment="Left" Margin="10,410,0,0" VerticalAlignment="Top" Width="580" Height="36" Background="#FF305FDC" BorderBrush="{x:Null}" Foreground="White" />
+        <DataGrid 
+                            IsReadOnly="True" 
+                            BorderThickness="1" 
+                            AlternatingRowBackground="White" 
+                            GridLinesVisibility="Horizontal" 
+                            VerticalScrollBarVisibility="Auto"  
+                            HorizontalAlignment="Left"
+                            Height="386" Margin="10,10,0,0" 
+                            VerticalAlignment="Top" Width="580" 
+                            x:Name="dataGridGasEquipment"
+                            AutoGenerateColumns="True" 
+                            BorderBrush="#FF1362BF" 
+                            Background="#FFBDDEEE"
+                            Foreground="#FF18063E"
+                            SelectedCellsChanged="dataGridGasEquipment_SelectedCellsChanged"/>
+        <Button x:Name="buttonQRcode" PreviewMouseDown="buttonQRcode_PreviewMouseDown" Content="Сгенирировать QR-код для выбранного элемента"  HorizontalAlignment="Left" Margin="10,460,0,0" VerticalAlignment="Top" Width="580" Height="36" Background="#FF305FDC" BorderBrush="{x:Null}" Foreground="White" />
     </Grid>
 </UserControl>

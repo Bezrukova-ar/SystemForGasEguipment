@@ -3,9 +3,13 @@ using iTextSharp.text.pdf;
 using Microsoft.Win32;
 using System.Data;
 using System.Data.SqlClient;
+
 using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using ZXing;
+using ZXing.QrCode;
 
 namespace SystemForGasEguipment.View
 {
@@ -17,7 +21,9 @@ namespace SystemForGasEguipment.View
         public Inventory()
         {
             InitializeComponent();
+            UploadingDataGasEquipment();
         }
+        public static int valueColumn;
         //кнопка для сохранения результата инвентаризации
         private void buttonInventory_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
@@ -79,6 +85,61 @@ namespace SystemForGasEguipment.View
                 }
                 document.Add(table);
                 document.Close();
+            }
+        }
+        //Метод для загрузки данных 
+        public void UploadingDataGasEquipment()
+        {
+            string query = "SELECT*FROM EguipmentItems";
+
+            using (SqlConnection connection = new SqlConnection(LoginWindow.connectionString))
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable dataTable = new DataTable();
+
+                adapter.Fill(dataTable);
+
+                DataView dataView = new DataView(dataTable);
+                dataGridGasEquipment.ItemsSource = dataView;
+                adapter.Dispose();
+                connection.Close();
+            }
+        }
+        //сгенирировать QR-код
+        private void buttonQRcode_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            BarcodeWriter writer = new BarcodeWriter
+            {
+                Format = BarcodeFormat.QR_CODE,
+                Options = new QrCodeEncodingOptions
+                {
+                    Height = 250,
+                    Width = 250
+                }
+            };
+
+            System.Drawing.Bitmap qrCode = writer.Write(valueColumn.ToString());
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "PNG Files|*.png";
+            saveFileDialog.Title = "Save QR Code";
+            saveFileDialog.FileName = "qr_code.png";
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                qrCode.Save(saveFileDialog.FileName);
+                MessageBox.Show("QR-код успешно сохранен");
+            }
+        }
+    
+        // получить значение ячейки
+        private void dataGridGasEquipment_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            DataRowView rowView = dataGridGasEquipment.SelectedItem as DataRowView;
+            if (rowView != null)
+            {
+                // Получаем значения ячеек строки
+                valueColumn = (int)rowView.Row["eguipmentID"];
             }
         }
     }

@@ -43,8 +43,8 @@
         </Border>
         <Border Background="White" Grid.Column="1" CornerRadius="0 10 10 0">
             <Grid>
-                <Border BorderBrush="#FF32ADD1" BorderThickness="2" HorizontalAlignment="Left" Height="300" Width="300" Margin="24,174,0,0" VerticalAlignment="Top">
-                    <Image x:Name="imageControl"  MaxHeight="300" MaxWidth="300"  MinHeight="300" MinWidth="300"  Drop="Image_Drop" DragEnter="Image_DragEnter" AllowDrop="True" />
+                <Border BorderBrush="#FF32ADD1" BorderThickness="2" HorizontalAlignment="Left" Height="250" Width="250" Margin="50,201,0,0" VerticalAlignment="Top">
+                    <Image x:Name="imageControl"  MaxHeight="300" MaxWidth="250"  MinHeight="250" MinWidth="250"  Drop="Image_Drop" DragEnter="Image_DragEnter" AllowDrop="True"  />
                 </Border>
                 
                 <TextBlock HorizontalAlignment="Left" Margin="24,13,0,0" TextWrapping="Wrap" Text="Перетащите изображение QR-кода на месторасположения изображения, либо воспользуйтесь кнопкой для загрузки изображения" VerticalAlignment="Top" Foreground="#FF32ADD1" FontSize="20" FontWeight="Bold" Width="484"/>
@@ -52,7 +52,7 @@
                     <TextBlock Background="{x:Null}" Foreground="#FF32ADD1" Text="Выбрать изображение" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"  />
                 </Border>
 
-                <Border MouseLeftButtonDown="GetInformationOnAnImage_MouseLeftButtonDown" Height="45" Width="150" BorderBrush="#FF32ADD1" BorderThickness="2" CornerRadius="25" Margin="358,429,25,26" >
+                <Border MouseLeftButtonDown="GetInformationOnAnImage_MouseLeftButtonDown" Height="45" Width="150" BorderBrush="#FF32ADD1" BorderThickness="2" CornerRadius="25" Margin="358,406,25,49" >
                     <TextBlock Background="{x:Null}" Foreground="#FF32ADD1" Text="Распознать" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"  />
                 </Border>
             </Grid>
