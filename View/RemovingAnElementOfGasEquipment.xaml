@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:SystemForGasEguipment.View"
              mc:Ignorable="d" 
              xmlns:vm="clr-namespace:SystemForGasEguipment.ViewModel"
-             d:DesignHeight="450" d:DesignWidth="800"
+             d:DesignHeight="600" d:DesignWidth="622"
              Style="{StaticResource Page_Style}">
     <UserControl.DataContext>
         <vm:RemovingAnElementOfGasEquipmentVM/>
@@ -40,7 +40,7 @@
                              materialDesign:HintAssist.FloatingOffset="0,-20"
                              BorderBrush="#FF1550D1"
                              BorderThickness="0 0 0 2"
-                             Margin="10,10,252,23"
+                             Margin="10,10,32,23"
                              SelectionBrush="#FFA4A3A3" CaretBrush="#FF080866"
                              Background="{x:Null}" Grid.Row="0"
                  FontSize="18"/>
