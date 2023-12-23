@@ -13,6 +13,7 @@ namespace SystemForGasEguipment
     public partial class LoginWindow : Window
     {
         static public string connectionString = "Data Source=DESKTOP-8LRHPT1;Initial Catalog=GasEquipment;Integrated Security=True";
+        static public int userID;
         public LoginWindow()
         {
             InitializeComponent();
@@ -38,8 +39,8 @@ namespace SystemForGasEguipment
                 {
                     // Пользователь найден, получение данных пользователя
                     reader.Read();
-                    //string userRole1 = reader.GetString(3).ToString();
                     int userRole = reader.GetInt32(3);
+                    userID = reader.GetInt32(0);
                     if (userRole == 1)
                     {
                         ApplicationWindowForARegularUser newWindow = new ApplicationWindowForARegularUser();

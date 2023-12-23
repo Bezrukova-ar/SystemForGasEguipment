@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Input;
@@ -22,7 +23,26 @@ namespace SystemForGasEguipment
         //подать заявку на расширение прав доступа
         private void ApplyForExtensionOfAccessRights_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(LoginWindow.connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand("UpdateVerificationRequest", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@userID", LoginWindow.userID);
 
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                }
+                MessageBox.Show("Ваша заявка отправлена на рассмотрение");
+            }
+            catch 
+            {
+                MessageBox.Show("Произошла ошибка, если это ваш первых вход, выйдите и зайдите");
+            }
         }
         //получить информацию по qr-коду
         private void GetInformationOnAnImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
