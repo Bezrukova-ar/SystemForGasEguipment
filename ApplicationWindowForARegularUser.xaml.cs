@@ -30,7 +30,7 @@ namespace SystemForGasEguipment
                     using (SqlCommand command = new SqlCommand("UpdateVerificationRequest", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@userID", LoginWindow.userID);
+                        command.Parameters.AddWithValue("@ID", LoginWindow.userID);
 
                         connection.Open();
                         command.ExecuteNonQuery();
@@ -39,7 +39,7 @@ namespace SystemForGasEguipment
                 }
                 MessageBox.Show("Ваша заявка отправлена на рассмотрение");
             }
-            catch 
+            catch
             {
                 MessageBox.Show("Произошла ошибка, если это ваш первых вход, выйдите и зайдите");
             }
