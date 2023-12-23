@@ -15,8 +15,11 @@ namespace SystemForGasEguipment
         {
             InitializeComponent();
             UploadingDataToExpandRights();
+            UploadingDataToDemote();
         }
-        public static int col1Value;
+        public static int valueColumnForEmpowerment;
+        public static int valueColumnForDemote;
+
         //Метод для загрузки данных о пользователях, которые хотят расширить права
         public void UploadingDataToExpandRights()
         {
@@ -35,7 +38,26 @@ namespace SystemForGasEguipment
                 connection.Close();
             }
         }
-        // для получения значения строки
+        //Метод для загрузки пользователей, которых можно разжаловать
+        public void UploadingDataToDemote()
+        {
+            string query = "SELECT ID, username FROM Users WHERE roleID = 3";
+
+            using (SqlConnection connection = new SqlConnection(LoginWindow.connectionString))
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable dataTable = new DataTable();
+
+                adapter.Fill(dataTable);
+
+                DataView dataView = new DataView(dataTable);
+                dataGridDemote.ItemsSource = dataView;
+                adapter.Dispose();
+                connection.Close();
+            }
+        }
+        
+        // для получения значения строки из таблицы с заявками для расширения должности
         private void dataGridEmpowerment_MouseClick(object sender, SelectedCellsChangedEventArgs e)
         {
             // Получаем выделенную строку
@@ -43,7 +65,19 @@ namespace SystemForGasEguipment
             if (rowView != null)
             {
                 // Получаем значения ячеек строки
-                col1Value =(int)rowView.Row["ID"];
+                valueColumnForEmpowerment = (int)rowView.Row["ID"];
+            }
+        }
+        // для получения значения строки из таблицы c пользователями на разжалование
+        private void dataGridDemote_MouseClick(object sender, SelectedCellsChangedEventArgs e)
+        {
+            // Получаем выделенную строку
+            DataRowView rowView = dataGridDemote.SelectedItem as DataRowView;
+            if (rowView != null)
+            {
+                // Получаем значения ячеек строки
+                valueColumnForDemote = (int)rowView.Row["ID"];
+                MessageBox.Show(valueColumnForDemote.ToString());
             }
         }
         private void buttonEmpowerment_Click(object sender, MouseButtonEventArgs e)
@@ -55,7 +89,7 @@ namespace SystemForGasEguipment
                     using (SqlCommand command = new SqlCommand("UpdateRoleEmpowerment", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@userID", col1Value);
+                        command.Parameters.AddWithValue("@userID", valueColumnForEmpowerment);
 
                         connection.Open();
                         command.ExecuteNonQuery();
@@ -63,12 +97,37 @@ namespace SystemForGasEguipment
                     }
                 }
                 UploadingDataToExpandRights();
+                UploadingDataToDemote();
             }
             catch
             {
                 MessageBox.Show("Сначала выберите человека, которому следует расширить возможности");
             }
 
+        }
+
+        private void buttonDemote_Click(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(LoginWindow.connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand("UpdateRoleDemote", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@userID", valueColumnForDemote);
+
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                }
+                UploadingDataToDemote();
+            }
+            catch
+            {
+                MessageBox.Show("Сначала выберите человека, которого хотите разжаловать");
+            }
         }
     }
 }
