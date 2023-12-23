@@ -66,7 +66,6 @@ namespace SystemForGasEguipment.View
                         connection.Open();
                         string updateQuery = "UPDATE EguipmentItems SET " + columnName + " = '" + newValue + "' " + "WHERE eguipmentID = " + editedItem["eguipmentID"];
                         SqlCommand command = new SqlCommand(updateQuery, connection);
-                        //Нужно дополнить код
                         command.ExecuteNonQuery();
                         connection.Close();
                     }
